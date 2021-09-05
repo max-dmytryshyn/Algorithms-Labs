@@ -1,3 +1,6 @@
+import sys
+
+
 def heapify_max(array, length, i):
     max_node = i
     left_child = 2 * i + 1
@@ -52,3 +55,9 @@ def heap_sort(input_array, sort_order="asc"):
 
     else:
         print("Wrong sort order")
+
+
+sort_order = sys.argv[1]
+input_array = [int(number) for number in sys.argv[2].split(",")]
+heap_sort(input_array, sort_order)
+print(input_array)
