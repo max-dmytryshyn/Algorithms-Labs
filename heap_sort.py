@@ -1,4 +1,3 @@
-import sys
 import time
 from datetime import timedelta
 
@@ -105,9 +104,3 @@ def heap_sort(input_array, sort_order="asc"):
     print("Execution time:", execution_time.microseconds, "μs")
     print("Comparisons:", comparisons_counter)
     print("Swaps:", swaps_counter)
-
-
-sort_order = sys.argv[1]
-input_array = [int(number) for number in sys.argv[2].split(",")]
-heap_sort(input_array, sort_order)
-print(input_array)
