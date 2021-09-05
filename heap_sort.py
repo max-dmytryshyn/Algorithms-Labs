@@ -104,3 +104,7 @@ def heap_sort(input_array, sort_order="asc"):
     print("Execution time:", execution_time.microseconds, "μs")
     print("Comparisons:", comparisons_counter)
     print("Swaps:", swaps_counter)
+    print(input_array)
+    print("------------------------------------------")
+
+    return input_array
