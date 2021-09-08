@@ -98,7 +98,8 @@ def heap_sort(input_array, sort_order="asc"):
 
     else:
         print("Wrong sort order")
-
+        return
+    
     execution_time = timedelta(seconds=time.monotonic() - start_time)
     print("Heap Sort:")
     print("Execution time:", execution_time.microseconds, "μs")
