@@ -43,7 +43,7 @@ class HashTable:
         else:
             for elem in self.array[index]:
                 if elem[0] == key:
-                    return elem
+                    return elem[1]
             else:
                 raise KeyError()
 
@@ -61,7 +61,7 @@ class HashTable:
                     if len(self.array[index]) == 0:
                         self.array[index] = None
 
-                    return element_to_delete
+                    return element_to_delete[1]
             else:
                 raise KeyError()
 
