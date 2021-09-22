@@ -1,5 +1,5 @@
 import unittest
-from .heap_sort import heap_sort
+from heap_sort import heap_sort
 from copy import deepcopy
 
 
@@ -27,4 +27,3 @@ class TestHeapSor(unittest.TestCase):
 
     def test_sorting_desc_in_asc(self):
         self.assertListEqual(heap_sort(deepcopy(self.sorted_in_desc), "asc"), self.sorted_in_asc)
-
