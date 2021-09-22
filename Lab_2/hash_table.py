@@ -15,7 +15,6 @@ class HashTable:
             for elem in list:
                 new_hash_map.add(elem[0], elem[1])
         self.array = new_hash_map.array
-        print("new_size", len(self.array))
 
     def add(self, key, value):
         index = self.hash(key)
