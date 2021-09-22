@@ -10,11 +10,12 @@ class HashTable:
     def double_storage(self):
         new_hash_map = HashTable(len(self.array) * 2)
         for list in self.array:
-            if list is []:
+            if list is None:
                 continue
             for elem in list:
                 new_hash_map.add(elem[0], elem[1])
         self.array = new_hash_map.array
+        print("new_size", len(self.array))
 
     def add(self, key, value):
         index = self.hash(key)
@@ -24,7 +25,7 @@ class HashTable:
                     elem[1] = value
                     break
             else:
-                self.array[index].append((key, value))
+                self.array[index].append([key, value])
 
         else:
             self.array[index] = [[key, value]]
@@ -54,7 +55,7 @@ class HashTable:
         else:
             for elem in self.array[index]:
                 if elem[0] == key:
-                    element_to_delete =elem
+                    element_to_delete = elem
                     self.array[index].remove(elem)
 
                     if len(self.array[index]) == 0:
