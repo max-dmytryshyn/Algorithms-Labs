@@ -82,13 +82,10 @@ class Node:
 
 
 bst = BinarySearchTree()
-bst.insert(8)
-bst.insert(9)
-bst.insert(6)
-bst.insert(10)
-bst.insert(-2)
-bst.insert(3)
-bst.insert(300)
-bst.insert(4)
-bst.insert(-100)
+elements = [8, 9, 6, 10, -2, 3, 300, 4, -100]
+for elem in elements:
+    bst.insert(elem)
+for elem in elements:
+    print(elem, ":", bst.search(elem), end=" | ")
+print()
 bst.print_tree()
