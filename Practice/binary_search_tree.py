@@ -62,6 +62,16 @@ class BinarySearchTree:
 
         return current_node.value
 
+    def print_tree(self):
+        self._print_node(self.root)
+
+    def _print_node(self, node):
+        print(node.value, end = " ")
+        if node.left_child is not None:
+            self._print_node(node.left_child)
+        if node.right_child is not None:
+            self._print_node(node.right_child)
+
 
 class Node:
 
@@ -79,3 +89,7 @@ bst.insert(6)
 bst.insert(10)
 bst.insert(-2)
 bst.insert(3)
+bst.insert(300)
+bst.insert(4)
+bst.insert(-100)
+bst.print_tree()
