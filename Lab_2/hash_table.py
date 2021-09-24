@@ -36,7 +36,7 @@ class HashTable:
 
     def get(self, key):
         index = self.hash(key)
-        if self.array[self.hash(key)] is None:
+        if self.array[index] is None:
             raise KeyError()
 
         else:
@@ -48,7 +48,7 @@ class HashTable:
 
     def remove(self, key):
         index = self.hash(key)
-        if self.array[index] is [None]:
+        if self.array[index] is None:
             raise KeyError()
 
         else:
