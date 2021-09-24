@@ -23,9 +23,6 @@ class BinarySearchTree:
             self.root = Node(value)
             return
 
-        if self.search(value):
-            return
-
         self._insert(self.root, value)
 
     def _insert(self, current_node, value):
@@ -38,6 +35,8 @@ class BinarySearchTree:
             if current_node.left_child is None:
                 current_node.left_child = Node(value, current_node)
             return self._insert(current_node.left_child, value)
+
+        return
 
     def delete(self, value):
         pass
