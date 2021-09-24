@@ -88,4 +88,6 @@ for elem in elements:
 for elem in elements:
     print(elem, ":", bst.search(elem), end=" | ")
 print()
+print(bst.max_value())
+print(bst.min_value())
 bst.print_tree()
