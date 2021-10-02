@@ -50,27 +50,75 @@ class BinarySearchTree:
         return
 
     def delete(self, value):
-        pass
+        node_to_delete = self._search(self.root, value)
+        if not node_to_delete:
+            raise KeyError()
 
-    def max_value(self):
-        if self.root is None:
+        if not node_to_delete.left_child and not node_to_delete.right_child:
+            self._delete_leaf(node_to_delete)
+
+        elif not node_to_delete.left_child or not node_to_delete.right_child:
+            self._delete_node_with_one_child(node_to_delete)
+
+        else:
+            self._delete_node_with_two_children(node_to_delete)
+
+    def _delete_leaf(self, node):
+        if node.parent.left_child == node:
+            node.parent.left_child = None
+        else:
+            node.parent.right_child = None
+        del node
+
+    def _delete_node_with_one_child(self, node):
+        if node.left_child:
+            node.value = node.left_child.value
+            node.left_child = None
+
+        else:
+            node.value = node.right_child.value
+            node.right_child = None
+
+    def _delete_node_with_two_children(self, node):
+        node_to_swap = self._min_node(node.right_child)
+        node.value = node_to_swap.value
+        self._delete_leaf(node_to_swap)
+
+    def _max_node(self, start_position):
+        if start_position is None:
             return None
 
-        current_node = self.root
+        current_node = start_position
         while current_node.right_child is not None:
             current_node = current_node.right_child
 
-        return current_node.value
+        return current_node
 
-    def min_value(self):
-        if self.root is None:
+    def _min_node(self, start_position):
+        if start_position is None:
             return None
 
-        current_node = self.root
+        current_node = start_position
         while current_node.left_child is not None:
             current_node = current_node.left_child
 
-        return current_node.value
+        return current_node
+
+    def max_value(self):
+        return self._max_node(self.root).value
+
+    def min_value(self):
+        return self._min_node(self.root).value
+
+    def print_elements(self):
+        self._print_element(self.root)
+
+    def _print_element(self, node):
+        print(node.value, end=" ")
+        if node.left_child is not None:
+            self._print_element(node.left_child)
+        if node.right_child is not None:
+            self._print_element(node.right_child)
 
     def print_tree(self):
         depth = self.depth()
@@ -154,15 +202,20 @@ class Node:
 
 
 bst = BinarySearchTree()
-elements = [600, 400, 300, 500, 600, 800, 700, 900, 100, 350, 450, 550, 650, 750, 850, 950, 75, 125, 325, 375, 425, 475,
-            525, 575, 626, 675, 725, 775, 825, 925, 975]
+elements = [9, 100, 10, 6, 8, 3, -2, 300, 4, 7]
 for elem in elements:
     bst.insert(elem)
-for elem in elements:
-    print(elem, ":", bst.search(elem), end=" | ")
-print()
-print(bst.max_value())
-print(bst.min_value())
-print(bst.depth())
-bst.print_tree()
 
+bst.print_elements()
+print()
+bst.delete(300)
+bst.print_elements()
+print()
+bst.delete(4)
+bst.print_elements()
+print()
+bst.delete(3)
+bst.print_elements()
+print()
+bst.delete(6)
+bst.print_elements()
