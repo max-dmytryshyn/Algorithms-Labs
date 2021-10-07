@@ -7,20 +7,32 @@ class Hamster:
         return self.basic_food + self.extra_food * number_of_neighbours
 
 
+def delete_useless_hamsters(hamsters, food_amount):
+    new_hamsters = []
+    for hamster in hamsters:
+        if hamster.basic_food <= food_amount:
+            new_hamsters.append(hamster)
+    hamsters[:] = new_hamsters
+
+
+def find_hamsters_amount(possible_amounts, hamsters, food_amount):
+    if len(possible_amounts) == 0:
+        return 0
+
+    if len(possible_amounts) == 1:
+        return possible_amounts[0]
+
+    current_amount = possible_amounts[len(possible_amounts) // 2]
+    hamsters.sort(key=lambda hamster: hamster.total_food(current_amount - 1))
+    if sum(hamster.total_food(current_amount - 1) for hamster in hamsters[:current_amount]) > food_amount:
+        return find_hamsters_amount(possible_amounts[:len(possible_amounts) // 2], hamsters, food_amount)
+    else:
+        return find_hamsters_amount(possible_amounts[len(possible_amounts) // 2:], hamsters, food_amount)
+
+
 def max_hamsters_amount(hamsters, food_amount):
-    used_food_amount = 0
-    result = 0
-
-    while result < len(hamsters):
-        result += 1
-        hamsters.sort(key=lambda hamster: hamster.total_food(result - 1))
-        used_food_amount = sum(
-            hamster.total_food(result - 1) for hamster in hamsters[:result])
-        if used_food_amount > food_amount:
-            result -= 1
-            break
-
-    return result
+    delete_useless_hamsters(hamsters, food_amount)
+    return find_hamsters_amount([i + 1 for i in range(len(hamsters))], hamsters, food_amount)
 
 
 if __name__ == "__main__":
@@ -29,8 +41,6 @@ if __name__ == "__main__":
     hamsters = []
 
     for i in range(total_hamsters_amount):
-        hamster = (Hamster(*[int(food_need) for food_need in input().split()]))
-        if hamster.basic_food <= food_amount:
-            hamsters.append(hamster)
+        hamsters.append(Hamster(*[int(food_need) for food_need in input().split()]))
 
     print(max_hamsters_amount(hamsters, food_amount))
