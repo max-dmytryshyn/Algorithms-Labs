@@ -1,3 +1,4 @@
+import heapq
 from math import inf
 
 
@@ -5,7 +6,7 @@ class Edge:
     def __init__(self, destination, weight=0):
         if weight < 0:
             raise ValueError
-        
+
         self.destination = destination
         self.weight = weight
 
@@ -18,6 +19,9 @@ class Vertex:
 
     def add_edge(self, destination, weight=0):
         self.edges[destination.name] = Edge(destination, weight)
+
+    def __lt__(self, other):
+        return self.name < other.name
 
 
 class Graph:
@@ -32,20 +36,19 @@ class Graph:
         distances[start_vertex_name] = 0
         visited = {vertex_name: False for vertex_name in self.vertexes.keys()}
         visited[start_vertex_name] = True
-        
-        queue = [self.vertexes[start_vertex_name]]
+
+        queue = []
+        heapq.heappush(queue, (0, self.vertexes[start_vertex]))
         while queue:
-            cur_vertex = queue.pop(0)
-            
+            cur_vertex = heapq.heappop(queue)[1]
+
             for edge in cur_vertex.edges.values():
+                if distances[cur_vertex.name] + edge.weight < distances[edge.destination.name]:
+                    distances[edge.destination.name] = distances[cur_vertex.name] + edge.weight
+
                 if not visited[edge.destination.name]:
                     visited[edge.destination.name] = True
-                    queue.append(edge.destination)
-                
-                if distances[cur_vertex.name] + edge.weight < distances[edge.destination.name]:
-                    if distances[edge.destination.name] != inf:
-                        queue.insert(0, edge.destination)
-                    distances[edge.destination.name] = distances[cur_vertex.name] + edge.weight
+                    heapq.heappush(queue, (distances[edge.destination.name], edge.destination))
 
         return distances
 
