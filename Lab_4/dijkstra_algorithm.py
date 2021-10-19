@@ -43,6 +43,8 @@ class Graph:
                     queue.append(edge.destination)
                 
                 if distances[cur_vertex.name] + edge.weight < distances[edge.destination.name]:
+                    if distances[edge.destination.name] != inf:
+                        queue.insert(0, edge.destination)
                     distances[edge.destination.name] = distances[cur_vertex.name] + edge.weight
 
         return distances
