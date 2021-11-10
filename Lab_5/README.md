@@ -21,7 +21,7 @@ are not in the growing spanning tree.
 3. Check for cycles. To do that, mark the nodes which have been already selected and insert only those nodes in the 
 Priority Queue that are not marked.
 
-<b>Complexity = O((V + E)*logV)</b>
+<b>Complexity = O(E*logV)</b>
  
 ---
 
