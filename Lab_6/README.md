@@ -30,7 +30,7 @@ For a given corridor calculate how many ways there are to pass it successfully.
 
 ---
 
-##Input
+## Input
   The input file ijones .in consists of H + 1 lines.
   + The first line contains two numbers W and H, separated by a space: W - width of corridor, 
   H - height of the corridor, 1 ≤ W, H ≤ 2000.
@@ -38,12 +38,12 @@ For a given corridor calculate how many ways there are to pass it successfully.
 
 ---
 
-##Output
+## Output
 Output file ijones.out contains only one integer - the number of different ways to pass the corridor.
 
 ---
 
-##Algorithm
+## Algorithm
   Main idea: number of paths to random plate C is a sum of numbers of paths to all plates from which we can get to C.
   With this idea we can build recursive algorithm and with the help of cash of results we can make this algorithm effective 
 
