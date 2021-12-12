@@ -85,7 +85,7 @@ class TestDijkstraAlgorithm(unittest.TestCase):
         self.assertDictEqual(self.graph.dijkstra_algorithm("G"), projected_result)
 
     def test_vertex_h(self):
-        projected_result = {"A": 8, "B": 11, "C": 7, "D": 16, "E": 13, "F": 3, "G": 1, "H": 0, "I": 7}
+        projected_result = {"A": 8, "B": 11, "C": 7, "D": 14, "E": 13, "F": 3, "G": 1, "H": 0, "I": 7}
         self.assertDictEqual(self.graph.dijkstra_algorithm("H"), projected_result)
 
     def test_vertex_i(self):

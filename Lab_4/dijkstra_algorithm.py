@@ -38,7 +38,7 @@ class Graph:
         visited[start_vertex_name] = True
 
         queue = []
-        heapq.heappush(queue, (0, self.vertexes[start_vertex]))
+        heapq.heappush(queue, (0, self.vertexes[start_vertex_name]))
         while queue:
             cur_vertex = heapq.heappop(queue)[1]
 
