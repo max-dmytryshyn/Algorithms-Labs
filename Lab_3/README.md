@@ -13,7 +13,7 @@ There are C hamsters in a pet shop. Find **max amount of hamsters** you can buy 
 
 ---
 
-##Input
+## Input
   + First row contain one number S - amount of *food packages/day* you have. 0 ≤ S ≤ 10<sup>9</sup>
   + Second row contain one number C - amount of hamsters in a pet shop. 1 ≤ C ≤ 10<sup>5</sup>
   + The nest C rows contain H<sub>i</sub>, G<sub>i</sub> - two integers, separated with whitespace,
@@ -25,7 +25,7 @@ Output contains only one integer - max amount of hamsters you can buy
 
 ---
 
-##Algorithm
+## Algorithm
 1. Remove all the hamsters which have `basic food need` bigger than **amount of food we have**.
 2. Create a list of possible hamsters amounts - `possible_amounts`
 3. With `possible_amounts` do the following:
