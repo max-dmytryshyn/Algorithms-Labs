@@ -5,15 +5,15 @@
     Impelement Prim's algortithm for finding the Minimum Spanning Tree
 ---
 
-##Input
+## Input
     Undirected and connected graph
 ---
 
-##Output
+## Output
     Single number - minimum edges weight to build spanning tree of given graph
 ---
 
-##Algorithm
+## Algorithm
 1. Maintain two disjoint sets of vertices. One containing vertices that are in the growing spanning tree and other that 
 are not in the growing spanning tree.
 2. Select the cheapest vertex that is connected to the growing spanning tree and is not in the growing spanning tree and
