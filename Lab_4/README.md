@@ -6,12 +6,12 @@ Build directed and weighted graph from input and implement Dijkstra algorithm to
 to all available vertexes
 ---
 
-##Input
+## Input
   + First row contain two numbers **N**, **S**: **N** - amount of edges, 0 < N <= 10000; **S** - start vertex
   + The next N rows contain 3 numbers - start of edge, end of edge and weight of edge, weight >= 0
 ---
 
-##Output
+## Output
 Output contains only one number - average distance from vertex **S** to all available vertexes
 
 ---
